@@ -26,6 +26,11 @@ namespace Clinica
             get { return admpass;}
             set { admpass = value;}
         }
+        //Variables Ezequiel 
+
+
+
+
         //Termino Variables Gerson
     
 
@@ -120,5 +125,6 @@ namespace Clinica
                 return false;
             }
         }
+
     }
 }
