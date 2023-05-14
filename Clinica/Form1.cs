@@ -16,34 +16,5 @@ namespace Clinica
         {
             InitializeComponent();
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int x = comboBox1.SelectedIndex;
-            switch (x)
-            {
-                case 0:
-                    Form2 fm2 = new Form2();
-                    this.Hide();
-                    fm2.Show();
-                    break;
-                case 1:
-                    Form5 fm5 = new Form5();
-                    this.Hide();
-                    fm5.Show();
-                    break;
-                case 2:
-                    Form9 fm9 = new Form9();
-                    this.Hide();
-                    fm9.Show();
-                    break;
-            }
-
-        }
     }
 }

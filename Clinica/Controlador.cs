@@ -29,7 +29,7 @@ namespace Clinica
         //Termino Variables Gerson
     
 
-        /*Para usar el metodo de verificar rut, al momento de ingresar parametros verificar que esten sin puntos
+        /*Para usar el metodo de verificar rut, al momento de ingresar paramatros verificar que esten sin puntos
          y con guion*/
         
         public bool Rut(string rut)
