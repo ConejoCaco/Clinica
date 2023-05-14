@@ -14,6 +14,13 @@ namespace Clinica
 
         //Variables Gerson
         private string admin, admpass;
+        //Variables Doctor
+        private string rutdoctor;
+        public string Rutdoctor
+        {
+            get { return rutdoctor; }
+            set { rutdoctor = value; }
+        }
 
         public string Admin
         {
@@ -119,6 +126,14 @@ namespace Clinica
             {
                 return false;
             }
+        }
+        public bool VerifRutDoc()
+        {
+            if (mo.ComprobarRut(rutdoctor).Equals(rutdoctor))
+            {
+                return true;
+            }
+            else { return false; }
         }
     }
 }
