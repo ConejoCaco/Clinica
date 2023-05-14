@@ -43,5 +43,12 @@ namespace Clinica
                 }
             }       
         }
+
+        private void fm2button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 fm1 = new Form1();
+            fm1.Show();
+        }
     }
 }

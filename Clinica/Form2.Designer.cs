@@ -52,6 +52,7 @@
             this.fm2button2.TabIndex = 1;
             this.fm2button2.Text = "button2";
             this.fm2button2.UseVisualStyleBackColor = true;
+            this.fm2button2.Click += new System.EventHandler(this.fm2button2_Click);
             // 
             // fm2textBox1
             // 
