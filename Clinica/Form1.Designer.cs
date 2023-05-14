@@ -39,7 +39,7 @@
             "Administrador",
             "Secretarios",
             "Medicos"});
-            this.comboBox1.Location = new System.Drawing.Point(181, 61);
+            this.comboBox1.Location = new System.Drawing.Point(164, 61);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(128, 21);
             this.comboBox1.TabIndex = 0;
