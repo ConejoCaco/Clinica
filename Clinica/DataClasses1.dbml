@@ -8,6 +8,14 @@
       <Column Name="Rut" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="dbo.Telefonos" Member="Telefonos">
+    <Type Name="Telefonos">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="numero_Tel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="numero_Tel_OP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Telefonos_Medicos" Member="Medicos" ThisKey="id" OtherKey="Telefono" Type="Medicos" />
+    </Type>
+  </Table>
   <Table Name="dbo.Citas" Member="Citas">
     <Type Name="Citas">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -43,12 +51,13 @@
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Nombres" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Apellidos" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Edad" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
-      <Column Name="Rut" Type="System.String" DbType="NChar(9) NOT NULL" CanBeNull="false" />
+      <Column Name="FechaNacimiento" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Rut" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="ID_Especialidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Email" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Disponible" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="Telefono" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
       <Association Name="Medicos_Citas" Member="Citas" ThisKey="id" OtherKey="ID_Medico" Type="Citas" />
       <Association Name="Especialidades_Medicos" Member="Especialidades" ThisKey="ID_Especialidad" OtherKey="id" Type="Especialidades" IsForeignKey="true" DeleteRule="SET NULL" />
       <Association Name="Telefonos_Medicos" Member="Telefonos" ThisKey="Telefono" OtherKey="id" Type="Telefonos" IsForeignKey="true" />
@@ -59,8 +68,8 @@
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Nombres" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Apellidos" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Edad" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
-      <Column Name="Rut" Type="System.String" DbType="NChar(9) NOT NULL" CanBeNull="false" />
+      <Column Name="FechaNacimiento" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Rut" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Telefono" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Pacientes_Citas" Member="Citas" ThisKey="id" OtherKey="ID_Paciente" Type="Citas" />
@@ -71,18 +80,11 @@
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Nombres" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Apellidos" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Edad" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
-      <Column Name="Rut" Type="System.String" DbType="NChar(9) NOT NULL" CanBeNull="false" />
+      <Column Name="FechaNacimiento" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Rut" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="Email" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
       <Association Name="Secretarios_Citas" Member="Citas" ThisKey="id" OtherKey="ID_Paciente" Type="Citas" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Telefonos" Member="Telefonos">
-    <Type Name="Telefonos">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="numero_Tel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="numero_Tel_OP" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Telefonos_Medicos" Member="Medicos" ThisKey="id" OtherKey="Telefono" Type="Medicos" />
     </Type>
   </Table>
 </Database>
