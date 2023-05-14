@@ -28,6 +28,9 @@ namespace Clinica
         }
         //Termino Variables Gerson
     
+        // Variables Clemente
+
+
 
         /*Para usar el metodo de verificar rut, al momento de ingresar parametros verificar que esten sin puntos
          y con guion*/
