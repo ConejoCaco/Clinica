@@ -12,9 +12,11 @@ namespace Clinica
 {
     public partial class Form5 : Form
     {
+        Controlador control = new Controlador();
         public Form5()
         {
             InitializeComponent();
         }
+
     }
 }
