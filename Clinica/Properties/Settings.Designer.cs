@@ -33,5 +33,16 @@ namespace Clinica.Properties {
                 return ((string)(this["ClinicaConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-BSS49D9R\\SQLEXPRESS;Initial Catalog=Clinica;Integrated Securit" +
+            "y=True")]
+        public string ClinicaConnectionString1 {
+            get {
+                return ((string)(this["ClinicaConnectionString1"]));
+            }
+        }
     }
 }
