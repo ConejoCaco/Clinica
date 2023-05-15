@@ -163,7 +163,7 @@ namespace Clinica
 
         public bool VerifRutyPassSecre()
         {
-            string[] DatosSecre = mo.ComprobarSecreRutyPass(Admin);
+            string[] DatosSecre = mo.ComprobarSecreRutyPass(rutsecre);
 
             if (DatosSecre[0].Equals(rutsecre) && DatosSecre[1].Equals(passsecre))
             {

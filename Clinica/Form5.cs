@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -27,19 +28,23 @@ namespace Clinica
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            string rutSecre = textBox1.Text;
-            string passSecre = textBox2.Text;
             if (string.IsNullOrEmpty(textBox1.Text) || string.IsNullOrEmpty(textBox2.Text))
             {
-                MessageBox.Show("Debe completar los campos");
+                MessageBox.Show("Rellene los campos por favor");
             }
             else 
             {
-                if (control.Rut(rutSecre))
+                control.RutSecre = textBox1.Text;
+                control.PassSecre = textBox2.Text;
+                if (control.VerifRutyPassSecre())
                 {
-                    control.RutSecre = rutSecre;
-                   
+                    Form3 form3 = new Form3();
+                    this.Hide();
+                    form3.Show();
+
                 }
+            
+            
             }
             
 
