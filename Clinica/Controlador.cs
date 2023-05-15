@@ -18,7 +18,7 @@ namespace Clinica
         //Variables Doctor
         private string rutdoctor;
         //Variables Clemente
-        private string rutsecre;
+        private string rutsecre,passsecre;
 
         public string Rutdoctor
         {
@@ -43,7 +43,12 @@ namespace Clinica
             get { return rutsecre;} 
             set { rutsecre = value;}
         }
-                            
+        
+        public string PassSecre
+        {
+            get { return passsecre;}
+            set { passsecre = value;}
+        }
         //Termino Variables Gerson
 
 
@@ -150,17 +155,20 @@ namespace Clinica
             else { return false; }
         }
 
-        public bool VerifRutSecre()
+        public bool VerifRutyPassSecre()
         {
-            if (mo.ComprobarSecreRut(rutsecre).Equals(rutsecre))
+            string[] DatosSecre = mo.ComprobarSecreRutyPass(Admin);
+
+            if (DatosSecre[0].Equals(rutsecre) && DatosSecre[1].Equals(passsecre))
             {
                 return true;
             }
-            else 
+            else
             {
-                return false; 
+                return false;
             }
-
         }
+
     }
+
 }

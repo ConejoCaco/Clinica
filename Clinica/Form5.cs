@@ -27,13 +27,19 @@ namespace Clinica
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            string rutSecre = textBox1.Text;
+            string passSecre = textBox2.Text;
             if (string.IsNullOrEmpty(textBox1.Text) || string.IsNullOrEmpty(textBox2.Text))
             {
                 MessageBox.Show("Debe completar los campos");
             }
             else 
             {
-                
+                if (control.Rut(rutSecre))
+                {
+                    control.RutSecre = rutSecre;
+                   
+                }
             }
             
 

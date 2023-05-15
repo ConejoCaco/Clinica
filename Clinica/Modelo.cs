@@ -22,13 +22,24 @@ namespace Clinica
 
             return dt;
         }
-        public string ComprobarRut(string b)
+        public string[] ComprobarRutyContra(string b)
         {
             Medicos doc = db.Medicos.Single(r => r.Rut.Equals(b));
-            string run = doc.Rut;
-            
-            return run;
-
+            string run = doc.Rut.Trim();
+            string contra = doc.Password.Trim();
+            string[] RyP = { run, contra };
+            return RyP;
         }
+        
+        public string[] ComprobarSecreRutyPass(string c)
+        {
+            Secretarios sec = db.Secretarios.Single(r=>r.Rut.Equals((c)));
+            string rut = sec.Rut.Trim();
+            string contra = sec.Password.Trim();
+            string[] DatosSecre = { rut, contra };
+            return DatosSecre;
+            
+        }
+        
     }
 }
