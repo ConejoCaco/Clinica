@@ -37,25 +37,24 @@ namespace Clinica
                 }
                 else
                 {
-                    if (controlador.Rut(rut))
+                    controlador.Admin = RutDoctor.Text;
+                    controlador.Admpass = PassDoctor.Text;
+                    if (controlador.VerifRutDoc())
                     {
-                        controlador.Rutdoctor = rut;
-                        if (controlador.VerifRutDoc() )
-                        {
-                            MessageBox.Show("Rut existende dentro de la base de dato");
-                        }
-                        else
-                        {
-                            MessageBox.Show("El rut no existe dentro de la base de dato");
-                        }
+                        Form8 nuevo = new Form8();
+                        this.Hide();
+                        nuevo.Show();
+                        MessageBox.Show("ola");
                     }
-                    else if (!controlador.Rut(rut))
+                    else
                     {
-                        MessageBox.Show("Rut/Password invalido");
+                        MessageBox.Show("Datos no Verificables");
+                        RutDoctor.Text = String.Empty;
+                        PassDoctor.Text = String.Empty;
                     }
                 }
             }
-            catch(Exception q)
+            catch (Exception q)
             {
                 MessageBox.Show("Error " + q);
             }
