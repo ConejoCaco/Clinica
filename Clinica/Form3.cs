@@ -12,10 +12,13 @@ namespace Clinica
 {
     public partial class Form3 : Form
     {
+        Controlador ctr = new Controlador();
         public Form3()
         {
             InitializeComponent();
         }
+
+        
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -33,6 +36,11 @@ namespace Clinica
             }
         }
 
-        
+
+        private void Form3_Load(object sender, EventArgs e)
+        {
+           
+            
+        }
     }
 }

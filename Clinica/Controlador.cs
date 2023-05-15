@@ -151,6 +151,7 @@ namespace Clinica
                 return false;
             }
         }
+        
         public bool VerifRutDoc()
         {
             string[] RyPv = mo.ComprobarRutyContra(Rutdoctor);

@@ -28,15 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.clinicaDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.clinicaDataSet = new Clinica.ClinicaDataSet();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            ((System.ComponentModel.ISupportInitialize)(this.clinicaDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clinicaDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -61,12 +66,15 @@
             this.comboBox1.Text = "Opciones";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // panel1
+            // clinicaDataSetBindingSource
             // 
-            this.panel1.Location = new System.Drawing.Point(236, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(552, 433);
-            this.panel1.TabIndex = 2;
+            this.clinicaDataSetBindingSource.DataSource = this.clinicaDataSet;
+            this.clinicaDataSetBindingSource.Position = 0;
+            // 
+            // clinicaDataSet
+            // 
+            this.clinicaDataSet.DataSetName = "ClinicaDataSet";
+            this.clinicaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // panel2
             // 
@@ -120,6 +128,13 @@
             this.button5.Text = "Salir";
             this.button5.UseVisualStyleBackColor = true;
             // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(244, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(541, 426);
+            this.panel1.TabIndex = 9;
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -136,6 +151,9 @@
             this.Controls.Add(this.label1);
             this.Name = "Form3";
             this.Text = "Form3";
+            this.Load += new System.EventHandler(this.Form3_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.clinicaDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clinicaDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,12 +163,14 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.BindingSource clinicaDataSetBindingSource;
+        private ClinicaDataSet clinicaDataSet;
+        private System.Windows.Forms.Panel panel1;
     }
 }
