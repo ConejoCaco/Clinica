@@ -13,7 +13,7 @@
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="numero_Tel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="numero_Tel_OP" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Telefonos_Medicos" Member="Medicos" ThisKey="id" OtherKey="Telefono" Type="Medicos" />
+      <Association Name="Telefonos_Medicos" Member="Medicos" ThisKey="id" OtherKey="ID_Telefono" Type="Medicos" />
     </Type>
   </Table>
   <Table Name="dbo.Citas" Member="Citas">
@@ -25,9 +25,7 @@
       <Column Name="ID_Secretario" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ID_Paciente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Citas_Historial_Medico" Member="Historial_Medico" ThisKey="id" OtherKey="ID_Cita" Type="Historial_Medico" />
-      <Association Name="Medicos_Citas" Member="Medicos" ThisKey="ID_Medico" OtherKey="id" Type="Medicos" IsForeignKey="true" />
       <Association Name="Pacientes_Citas" Member="Pacientes" ThisKey="ID_Paciente" OtherKey="id" Type="Pacientes" IsForeignKey="true" />
-      <Association Name="Secretarios_Citas" Member="Secretarios" ThisKey="ID_Paciente" OtherKey="id" Type="Secretarios" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Especialidades" Member="Especialidades">
@@ -37,13 +35,13 @@
       <Association Name="Especialidades_Medicos" Member="Medicos" ThisKey="id" OtherKey="ID_Especialidad" Type="Medicos" />
     </Type>
   </Table>
-  <Table Name="dbo.[Historial Medico]" Member="Historial_Medico">
+  <Table Name="dbo.Historial_Medico" Member="Historial_Medico">
     <Type Name="Historial_Medico">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Diagnostico" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
       <Column Name="Alergias" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="ID_Cita" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Citas_Historial_Medico" Member="Citas" ThisKey="ID_Cita" OtherKey="id" Type="Citas" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Citas_Historial_Medico" Member="Citas" ThisKey="ID_Cita" OtherKey="id" Type="Citas" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Medicos" Member="Medicos">
@@ -56,11 +54,10 @@
       <Column Name="ID_Especialidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Email" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Disponible" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="Telefono" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_Telefono" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Password" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-      <Association Name="Medicos_Citas" Member="Citas" ThisKey="id" OtherKey="ID_Medico" Type="Citas" />
       <Association Name="Especialidades_Medicos" Member="Especialidades" ThisKey="ID_Especialidad" OtherKey="id" Type="Especialidades" IsForeignKey="true" DeleteRule="SET NULL" />
-      <Association Name="Telefonos_Medicos" Member="Telefonos" ThisKey="Telefono" OtherKey="id" Type="Telefonos" IsForeignKey="true" />
+      <Association Name="Telefonos_Medicos" Member="Telefonos" ThisKey="ID_Telefono" OtherKey="id" Type="Telefonos" IsForeignKey="true" DeleteRule="SET NULL" />
     </Type>
   </Table>
   <Table Name="dbo.Pacientes" Member="Pacientes">
@@ -84,7 +81,6 @@
       <Column Name="Rut" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="Email" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Password" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-      <Association Name="Secretarios_Citas" Member="Citas" ThisKey="id" OtherKey="ID_Paciente" Type="Citas" />
     </Type>
   </Table>
 </Database>

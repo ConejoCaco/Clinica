@@ -377,7 +377,7 @@ namespace Clinica
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Telefonos_Medicos", Storage="_Medicos", ThisKey="id", OtherKey="Telefono")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Telefonos_Medicos", Storage="_Medicos", ThisKey="id", OtherKey="ID_Telefono")]
 		public EntitySet<Medicos> Medicos
 		{
 			get
@@ -443,11 +443,7 @@ namespace Clinica
 		
 		private EntitySet<Historial_Medico> _Historial_Medico;
 		
-		private EntityRef<Medicos> _Medicos;
-		
 		private EntityRef<Pacientes> _Pacientes;
-		
-		private EntityRef<Secretarios> _Secretarios;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
@@ -470,9 +466,7 @@ namespace Clinica
 		public Citas()
 		{
 			this._Historial_Medico = new EntitySet<Historial_Medico>(new Action<Historial_Medico>(this.attach_Historial_Medico), new Action<Historial_Medico>(this.detach_Historial_Medico));
-			this._Medicos = default(EntityRef<Medicos>);
 			this._Pacientes = default(EntityRef<Pacientes>);
-			this._Secretarios = default(EntityRef<Secretarios>);
 			OnCreated();
 		}
 		
@@ -547,10 +541,6 @@ namespace Clinica
 			{
 				if ((this._ID_Medico != value))
 				{
-					if (this._Medicos.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnID_MedicoChanging(value);
 					this.SendPropertyChanging();
 					this._ID_Medico = value;
@@ -591,7 +581,7 @@ namespace Clinica
 			{
 				if ((this._ID_Paciente != value))
 				{
-					if ((this._Pacientes.HasLoadedOrAssignedValue || this._Secretarios.HasLoadedOrAssignedValue))
+					if (this._Pacientes.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -614,40 +604,6 @@ namespace Clinica
 			set
 			{
 				this._Historial_Medico.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Medicos_Citas", Storage="_Medicos", ThisKey="ID_Medico", OtherKey="id", IsForeignKey=true)]
-		public Medicos Medicos
-		{
-			get
-			{
-				return this._Medicos.Entity;
-			}
-			set
-			{
-				Medicos previousValue = this._Medicos.Entity;
-				if (((previousValue != value) 
-							|| (this._Medicos.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Medicos.Entity = null;
-						previousValue.Citas.Remove(this);
-					}
-					this._Medicos.Entity = value;
-					if ((value != null))
-					{
-						value.Citas.Add(this);
-						this._ID_Medico = value.id;
-					}
-					else
-					{
-						this._ID_Medico = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Medicos");
-				}
 			}
 		}
 		
@@ -681,40 +637,6 @@ namespace Clinica
 						this._ID_Paciente = default(int);
 					}
 					this.SendPropertyChanged("Pacientes");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Secretarios_Citas", Storage="_Secretarios", ThisKey="ID_Paciente", OtherKey="id", IsForeignKey=true)]
-		public Secretarios Secretarios
-		{
-			get
-			{
-				return this._Secretarios.Entity;
-			}
-			set
-			{
-				Secretarios previousValue = this._Secretarios.Entity;
-				if (((previousValue != value) 
-							|| (this._Secretarios.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Secretarios.Entity = null;
-						previousValue.Citas.Remove(this);
-					}
-					this._Secretarios.Entity = value;
-					if ((value != null))
-					{
-						value.Citas.Add(this);
-						this._ID_Paciente = value.id;
-					}
-					else
-					{
-						this._ID_Paciente = default(int);
-					}
-					this.SendPropertyChanged("Secretarios");
 				}
 			}
 		}
@@ -866,7 +788,7 @@ namespace Clinica
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[Historial Medico]")]
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Historial_Medico")]
 	public partial class Historial_Medico : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -986,7 +908,7 @@ namespace Clinica
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Citas_Historial_Medico", Storage="_Citas", ThisKey="ID_Cita", OtherKey="id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Citas_Historial_Medico", Storage="_Citas", ThisKey="ID_Cita", OtherKey="id", IsForeignKey=true)]
 		public Citas Citas
 		{
 			get
@@ -1063,11 +985,9 @@ namespace Clinica
 		
 		private bool _Disponible;
 		
-		private System.Nullable<int> _Telefono;
+		private System.Nullable<int> _ID_Telefono;
 		
 		private string _Password;
-		
-		private EntitySet<Citas> _Citas;
 		
 		private EntityRef<Especialidades> _Especialidades;
 		
@@ -1093,15 +1013,14 @@ namespace Clinica
     partial void OnEmailChanged();
     partial void OnDisponibleChanging(bool value);
     partial void OnDisponibleChanged();
-    partial void OnTelefonoChanging(System.Nullable<int> value);
-    partial void OnTelefonoChanged();
+    partial void OnID_TelefonoChanging(System.Nullable<int> value);
+    partial void OnID_TelefonoChanged();
     partial void OnPasswordChanging(string value);
     partial void OnPasswordChanged();
     #endregion
 		
 		public Medicos()
 		{
-			this._Citas = new EntitySet<Citas>(new Action<Citas>(this.attach_Citas), new Action<Citas>(this.detach_Citas));
 			this._Especialidades = default(EntityRef<Especialidades>);
 			this._Telefonos = default(EntityRef<Telefonos>);
 			OnCreated();
@@ -1271,26 +1190,26 @@ namespace Clinica
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Telefono", DbType="Int")]
-		public System.Nullable<int> Telefono
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Telefono", DbType="Int")]
+		public System.Nullable<int> ID_Telefono
 		{
 			get
 			{
-				return this._Telefono;
+				return this._ID_Telefono;
 			}
 			set
 			{
-				if ((this._Telefono != value))
+				if ((this._ID_Telefono != value))
 				{
 					if (this._Telefonos.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnTelefonoChanging(value);
+					this.OnID_TelefonoChanging(value);
 					this.SendPropertyChanging();
-					this._Telefono = value;
-					this.SendPropertyChanged("Telefono");
-					this.OnTelefonoChanged();
+					this._ID_Telefono = value;
+					this.SendPropertyChanged("ID_Telefono");
+					this.OnID_TelefonoChanged();
 				}
 			}
 		}
@@ -1312,19 +1231,6 @@ namespace Clinica
 					this.SendPropertyChanged("Password");
 					this.OnPasswordChanged();
 				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Medicos_Citas", Storage="_Citas", ThisKey="id", OtherKey="ID_Medico")]
-		public EntitySet<Citas> Citas
-		{
-			get
-			{
-				return this._Citas;
-			}
-			set
-			{
-				this._Citas.Assign(value);
 			}
 		}
 		
@@ -1362,7 +1268,7 @@ namespace Clinica
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Telefonos_Medicos", Storage="_Telefonos", ThisKey="Telefono", OtherKey="id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Telefonos_Medicos", Storage="_Telefonos", ThisKey="ID_Telefono", OtherKey="id", IsForeignKey=true, DeleteRule="SET NULL")]
 		public Telefonos Telefonos
 		{
 			get
@@ -1385,11 +1291,11 @@ namespace Clinica
 					if ((value != null))
 					{
 						value.Medicos.Add(this);
-						this._Telefono = value.id;
+						this._ID_Telefono = value.id;
 					}
 					else
 					{
-						this._Telefono = default(Nullable<int>);
+						this._ID_Telefono = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("Telefonos");
 				}
@@ -1414,18 +1320,6 @@ namespace Clinica
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_Citas(Citas entity)
-		{
-			this.SendPropertyChanging();
-			entity.Medicos = this;
-		}
-		
-		private void detach_Citas(Citas entity)
-		{
-			this.SendPropertyChanging();
-			entity.Medicos = null;
 		}
 	}
 	
@@ -1683,8 +1577,6 @@ namespace Clinica
 		
 		private string _Password;
 		
-		private EntitySet<Citas> _Citas;
-		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1707,7 +1599,6 @@ namespace Clinica
 		
 		public Secretarios()
 		{
-			this._Citas = new EntitySet<Citas>(new Action<Citas>(this.attach_Citas), new Action<Citas>(this.detach_Citas));
 			OnCreated();
 		}
 		
@@ -1851,19 +1742,6 @@ namespace Clinica
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Secretarios_Citas", Storage="_Citas", ThisKey="id", OtherKey="ID_Paciente")]
-		public EntitySet<Citas> Citas
-		{
-			get
-			{
-				return this._Citas;
-			}
-			set
-			{
-				this._Citas.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1882,18 +1760,6 @@ namespace Clinica
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_Citas(Citas entity)
-		{
-			this.SendPropertyChanging();
-			entity.Secretarios = this;
-		}
-		
-		private void detach_Citas(Citas entity)
-		{
-			this.SendPropertyChanging();
-			entity.Secretarios = null;
 		}
 	}
 }
