@@ -17,12 +17,17 @@ namespace Clinica
         private string admin, admpass;
         //Variables Doctor
         private string rutdoctor;
+        public string passdoc;
         public string Rutdoctor
         {
             get { return rutdoctor; }
             set { rutdoctor = value; }
         }
-
+        public string Passdoc
+        {
+            get { return passdoc; }
+            set { passdoc = value; }
+        }
         public string Admin
         {
             get { return admin;}
@@ -116,8 +121,6 @@ namespace Clinica
 
             
         }
-
-
         public bool Login()
         {
             string[] dat = mo.datos(Admin);
@@ -139,5 +142,6 @@ namespace Clinica
             }
             else { return false; }
         }
+        
     }
 }

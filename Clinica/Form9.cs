@@ -37,10 +37,15 @@ namespace Clinica
                 }
                 else
                 {
+                    
+
+
+
+
                     if (controlador.Rut(rut))
                     {
                         controlador.Rutdoctor = rut;
-                        if (controlador.VerifRutDoc())
+                        if (controlador.VerifRutDoc() )
                         {
                             MessageBox.Show("Rut existende dentro de la base de dato");
                         }
@@ -51,7 +56,7 @@ namespace Clinica
                     }
                     else if (!controlador.Rut(rut))
                     {
-                        MessageBox.Show("Rut invalido");
+                        MessageBox.Show("Rut/Password invalido");
                     }
                 }
             }
