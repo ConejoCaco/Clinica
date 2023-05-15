@@ -17,6 +17,9 @@ namespace Clinica
         private string admin, admpass;
         //Variables Doctor
         private string rutdoctor;
+        //Variables Clemente
+        private string rutsecre;
+
         public string Rutdoctor
         {
             get { return rutdoctor; }
@@ -34,12 +37,19 @@ namespace Clinica
             get { return admpass;}
             set { admpass = value;}
         }
+
+        public string RutSecre 
+        {
+            get { return rutsecre;} 
+            set { rutsecre = value;}
+        }
+                            
         //Termino Variables Gerson
-    
+
 
         /*Para usar el metodo de verificar rut, al momento de ingresar paramatros verificar que esten sin puntos
          y con guion*/
-        
+
         public bool Rut(string rut)
         {
             string run = "";
@@ -138,6 +148,19 @@ namespace Clinica
                 return true;
             }
             else { return false; }
+        }
+
+        public bool VerifRutSecre()
+        {
+            if (mo.ComprobarSecreRut(rutsecre).Equals(rutsecre))
+            {
+                return true;
+            }
+            else 
+            {
+                return false; 
+            }
+
         }
     }
 }
