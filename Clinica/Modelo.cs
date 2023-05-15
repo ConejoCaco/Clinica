@@ -30,5 +30,14 @@ namespace Clinica
             string[] RyP = { run, contra };
             return RyP;
         }
+        
+        public string ComprobarSecreRut(string c)
+        {
+            Secretarios sec = db.Secretarios.Single(r=>r.Rut.Equals((c)));
+            string rut = sec.Rut.Trim();
+            return rut;
+            
+        }
+        
     }
 }
