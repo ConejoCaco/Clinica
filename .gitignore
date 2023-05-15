@@ -363,3 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 /Clinica/DataClasses1.dbml
 /Clinica/DataClasses1.dbml.layout
+/Clinica/DataClasses1.dbml.layout
+/Clinica/DataClasses1.designer.cs
