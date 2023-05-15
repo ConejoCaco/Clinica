@@ -67,6 +67,7 @@
             // 
             this.fm2textBox2.Location = new System.Drawing.Point(279, 129);
             this.fm2textBox2.Name = "fm2textBox2";
+            this.fm2textBox2.PasswordChar = '*';
             this.fm2textBox2.Size = new System.Drawing.Size(113, 20);
             this.fm2textBox2.TabIndex = 3;
             // 
