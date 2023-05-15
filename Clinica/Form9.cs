@@ -37,11 +37,6 @@ namespace Clinica
                 }
                 else
                 {
-                    
-
-
-
-
                     if (controlador.Rut(rut))
                     {
                         controlador.Rutdoctor = rut;

@@ -16,7 +16,7 @@ namespace Clinica
         //Variables Gerson
         private string admin, admpass;
         //Variables Doctor
-        private string rutdoctor;
+        private string rutdoctor, contradoc;
         //Variables Clemente
         private string rutsecre,passsecre;
 
@@ -24,6 +24,11 @@ namespace Clinica
         {
             get { return rutdoctor; }
             set { rutdoctor = value; }
+        }
+        public string Contradoc
+        {
+            get { return contradoc; }
+            set { contradoc = value; }
         }
 
         public string Admin
@@ -148,7 +153,8 @@ namespace Clinica
         }
         public bool VerifRutDoc()
         {
-            if (mo.ComprobarRut(rutdoctor).Equals(rutdoctor))
+            string[] RyPv = mo.ComprobarRutyContra(Rutdoctor);
+            if (RyPv[0].Equals(rutdoctor) && RyPv[1].Equals(contradoc))
             {
                 return true;
             }
