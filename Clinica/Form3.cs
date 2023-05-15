@@ -12,35 +12,9 @@ namespace Clinica
 {
     public partial class Form3 : Form
     {
-        Controlador ctr = new Controlador();
         public Form3()
         {
             InitializeComponent();
-        }
-
-        
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int x = comboBox1.SelectedIndex;
-            switch (x)
-            {
-                case 0:
-                    panel1.Show();
-                    panel2.Hide();
-                    break;
-                case 1:
-                    panel2.Show();
-                    panel1.Hide();
-                    break;
-            }
-        }
-
-
-        private void Form3_Load(object sender, EventArgs e)
-        {
-           
-            
         }
     }
 }
