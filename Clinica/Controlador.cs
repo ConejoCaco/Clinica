@@ -130,9 +130,9 @@ namespace Clinica
 
         public bool Login()
         {
-            string[] dat = mo.datos(Admin);
+            string[] dat = mo.datos(admin);
 
-            if (dat[0].Equals(Admin) && dat[1].Equals(Admpass)) { 
+            if (dat[0].Equals(admin) && dat[1].Equals(admpass)) { 
             return true;
 
             }

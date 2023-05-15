@@ -16,5 +16,21 @@ namespace Clinica
         {
             InitializeComponent();
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int x = comboBox1.SelectedIndex;
+            switch (x)
+            {
+                case 0:
+                    panel1.Show();
+                    panel2.Hide();
+                    break;
+                case 1:
+                    panel2.Show();
+                    panel1.Hide();
+                    break;
+            }
+        }
     }
 }
