@@ -38,9 +38,9 @@ namespace Clinica
                 control.PassSecre = textBox2.Text;
                 if (control.VerifRutyPassSecre())
                 {
-                    Form3 form3 = new Form3();
+                    Form6 form6 = new Form6();
                     this.Hide();
-                    form3.Show();
+                    form6.Show();
 
                 }
             
