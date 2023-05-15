@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Clinica
 {
@@ -50,67 +51,70 @@ namespace Clinica
             char[] rut_div = rut1.ToCharArray();
             int[] a8 = { 2, 3, 4, 5, 6, 7, 2, 3 };
 
-            try
-            {
-                for (int i = rut1.Length - 1; i >= 0; i--)
+            
+                try
                 {
-                    if (char.IsDigit(rut_div[i]))
+                    for (int i = rut1.Length - 1; i >= 0; i--)
                     {
-                        run += rut_div[i];
+                        if (char.IsDigit(rut_div[i]))
+                        {
+                            run += rut_div[i];
+                        }
+                    }
+                    char[] rutf = run.ToCharArray();
+                    if (rutf.Length == 7)
+                    {
+                        for (int i = 0; i < 7; i++)
+                        {
+                            char a = rutf[i];
+                            int b;
+                            b = a - '0';
+                            mult = b * a8[i];
+                            sum += mult;
+                        }
+                        int c = sum / 11;
+                        int d = c * 11;
+                        int e = sum - d;
+                        num_verificador = 11 - e;
+                    }
+                    if (rutf.Length == 8)
+                    {
+                        for (int i = 0; i < 8; i++)
+                        {
+                            char a = rutf[i];
+                            int b;
+                            b = a - '0';
+                            mult = b * a8[i];
+                            sum += mult;
+                        }
+                        int c = sum / 11;
+                        int d = c * 11;
+                        int e = sum - d;
+                        num_verificador = 11 - e;
                     }
                 }
-                char[] rutf = run.ToCharArray();
-                if (rutf.Length == 7)
-                {
-                    for (int i = 0; i < 7; i++)
-                    {
-                        char a = rutf[i];
-                        int b;
-                        b = a - '0';
-                        mult = b * a8[i];
-                        sum += mult;
-                    }
-                    int c = sum / 11;
-                    int d = c * 11;
-                    int e = sum - d;
-                    num_verificador = 11 - e;
-                }
-                if (rutf.Length == 8)
-                {
-                    for (int i = 0; i < 8; i++)
-                    {
-                        char a = rutf[i];
-                        int b;
-                        b = a - '0';
-                        mult = b * a8[i];
-                        sum += mult;
-                    }
-                    int c = sum / 11;
-                    int d = c * 11;
-                    int e = sum - d;
-                    num_verificador = 11 - e;
-                }
-            }
-            catch (Exception e) { }
+                catch (Exception e) { }
 
-            string ultimo = auxrut.Substring(auxrut.Length - 1);
-            string auxR = num_verificador.ToString();
-            if (ultimo.Equals("K") || ultimo.Equals("k") && num_verificador == 10)
-            {
-                return true;
-            }
-            else if (auxR.Equals(ultimo))
-            {
-                return true;
-            }
-            else if (ultimo.Equals("0") && num_verificador == 11)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+                string ultimo = auxrut.Substring(auxrut.Length - 1);
+                string auxR = num_verificador.ToString();
+                if (ultimo.Equals("K") || ultimo.Equals("k") && num_verificador == 10)
+                {
+                    return true;
+                }
+                else if (auxR.Equals(ultimo))
+                {
+                    return true;
+                }
+                else if (ultimo.Equals("0") && num_verificador == 11)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            
         }
 
 

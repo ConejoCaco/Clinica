@@ -62,6 +62,7 @@
             this.Volver.TabIndex = 15;
             this.Volver.Text = "Volver";
             this.Volver.UseVisualStyleBackColor = true;
+            this.Volver.Click += new System.EventHandler(this.Volver_Click);
             // 
             // PassDoctor
             // 
@@ -99,7 +100,7 @@
             this.Controls.Add(this.RutDoctor);
             this.Controls.Add(this.Ingresar);
             this.Name = "Form9";
-            this.Text = "Form9";
+            this.Text = "Ingreso Doctor";
             this.Load += new System.EventHandler(this.Form9_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

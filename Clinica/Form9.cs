@@ -29,10 +29,43 @@ namespace Clinica
             string rut = RutDoctor.Text;
             rut.Replace(" ", "");
             rut.Replace(".", "");
-            if (controlador.Rut(rut))
+            try
             {
-                controlador.Rutdoctor = rut;
+                if (string.IsNullOrEmpty(RutDoctor.Text) || string.IsNullOrEmpty(PassDoctor.Text))
+                {
+                    MessageBox.Show("Debe completar los campos");
+                }
+                else
+                {
+                    if (controlador.Rut(rut))
+                    {
+                        controlador.Rutdoctor = rut;
+                        if (controlador.VerifRutDoc())
+                        {
+                            MessageBox.Show("Rut existende dentro de la base de dato");
+                        }
+                        else
+                        {
+                            MessageBox.Show("El rut no existe dentro de la base de dato");
+                        }
+                    }
+                    else if (!controlador.Rut(rut))
+                    {
+                        MessageBox.Show("Rut invalido");
+                    }
+                }
             }
+            catch(Exception q)
+            {
+                MessageBox.Show("Error " + q);
+            }
+        }
+
+        private void Volver_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 fm1 = new Form1();
+            fm1.Show();
         }
     }
 }
