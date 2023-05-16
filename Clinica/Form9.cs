@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Clinica
 {
@@ -15,48 +16,39 @@ namespace Clinica
         Controlador controlador = new Controlador();
         public Form9()
         {
-            
+
             InitializeComponent();
         }
 
         private void Form9_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void Ingresar_Click(object sender, EventArgs e)
         {
-            string rut = RutDoctor.Text;
-            rut.Replace(" ", "");
-            rut.Replace(".", "");
-            try
+
+            if (string.IsNullOrEmpty(RutDoctor.Text) || string.IsNullOrEmpty(PassDoctor.Text))
             {
-                if (string.IsNullOrEmpty(RutDoctor.Text) || string.IsNullOrEmpty(PassDoctor.Text))
+                MessageBox.Show("Rellene los campos por favor");
+            }
+            else
+            {
+                controlador.Rutdoctor = RutDoctor.Text;
+                controlador.Contradoc = PassDoctor.Text;
+                if (controlador.VerifRutDoc())
                 {
-                    MessageBox.Show("Debe completar los campos");
+                    
+                    Form10 nuevo = new Form10();
+                    
+                    this.Hide();
+                    nuevo.Show();
+                    
                 }
                 else
                 {
-                    controlador.Admin = RutDoctor.Text;
-                    controlador.Admpass = PassDoctor.Text;
-                    if (controlador.VerifRutDoc())
-                    {
-                        Form8 nuevo = new Form8();
-                        this.Hide();
-                        nuevo.Show();
-                        MessageBox.Show("ola");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Datos no Verificables");
-                        RutDoctor.Text = String.Empty;
-                        PassDoctor.Text = String.Empty;
-                    }
+                    MessageBox.Show("Datos Invalidos");
                 }
-            }
-            catch (Exception q)
-            {
-                MessageBox.Show("Error " + q);
             }
         }
 
@@ -65,6 +57,11 @@ namespace Clinica
             this.Hide();
             Form1 fm1 = new Form1();
             fm1.Show();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

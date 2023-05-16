@@ -34,12 +34,13 @@
             this.PassDoctor = new System.Windows.Forms.TextBox();
             this.RutDoctor = new System.Windows.Forms.TextBox();
             this.Ingresar = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(250, 154);
+            this.label2.Location = new System.Drawing.Point(149, 153);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 16);
             this.label2.TabIndex = 17;
@@ -48,7 +49,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(250, 113);
+            this.label1.Location = new System.Drawing.Point(149, 91);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(33, 16);
             this.label1.TabIndex = 16;
@@ -56,7 +57,7 @@
             // 
             // Volver
             // 
-            this.Volver.Location = new System.Drawing.Point(329, 271);
+            this.Volver.Location = new System.Drawing.Point(237, 263);
             this.Volver.Name = "Volver";
             this.Volver.Size = new System.Drawing.Size(75, 24);
             this.Volver.TabIndex = 15;
@@ -66,21 +67,22 @@
             // 
             // PassDoctor
             // 
-            this.PassDoctor.Location = new System.Drawing.Point(329, 151);
+            this.PassDoctor.Location = new System.Drawing.Point(228, 150);
             this.PassDoctor.Name = "PassDoctor";
+            this.PassDoctor.PasswordChar = '*';
             this.PassDoctor.Size = new System.Drawing.Size(100, 22);
             this.PassDoctor.TabIndex = 14;
             // 
             // RutDoctor
             // 
-            this.RutDoctor.Location = new System.Drawing.Point(329, 110);
+            this.RutDoctor.Location = new System.Drawing.Point(228, 85);
             this.RutDoctor.Name = "RutDoctor";
             this.RutDoctor.Size = new System.Drawing.Size(100, 22);
             this.RutDoctor.TabIndex = 13;
             // 
             // Ingresar
             // 
-            this.Ingresar.Location = new System.Drawing.Point(329, 216);
+            this.Ingresar.Location = new System.Drawing.Point(237, 220);
             this.Ingresar.Name = "Ingresar";
             this.Ingresar.Size = new System.Drawing.Size(75, 26);
             this.Ingresar.TabIndex = 12;
@@ -88,11 +90,23 @@
             this.Ingresar.UseVisualStyleBackColor = true;
             this.Ingresar.Click += new System.EventHandler(this.Ingresar_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(149, 122);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(151, 16);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "Ejemplo:        11111111-1";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
             // Form9
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(559, 411);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Volver);
@@ -101,7 +115,6 @@
             this.Controls.Add(this.Ingresar);
             this.Name = "Form9";
             this.Text = "Ingreso Doctor";
-            this.Load += new System.EventHandler(this.Form9_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -115,5 +128,6 @@
         private System.Windows.Forms.TextBox PassDoctor;
         private System.Windows.Forms.TextBox RutDoctor;
         private System.Windows.Forms.Button Ingresar;
+        private System.Windows.Forms.Label label3;
     }
 }

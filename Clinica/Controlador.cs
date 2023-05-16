@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,7 +18,7 @@ namespace Clinica
         //Variables Gerson
         private string admin, admpass;
         //Variables Doctor
-        private string rutdoctor, contradoc;
+        private string rutdoctor, contradoc,nombredoc,last_namedoc;
         //Variables Clemente
         private string rutsecre,passsecre;
 
@@ -29,6 +31,11 @@ namespace Clinica
         {
             get { return contradoc; }
             set { contradoc = value; }
+        }
+        public string Nombredoc
+        {
+            get { return nombredoc; }
+            set { nombredoc = value; }
         }
 
         public string Admin
@@ -153,12 +160,14 @@ namespace Clinica
         }
         public bool VerifRutDoc()
         {
-            string[] RyPv = mo.ComprobarRutyContra(Rutdoctor);
+            string[] RyPv = mo.ComprobarRutyContra(rutdoctor);
             if (RyPv[0].Equals(rutdoctor) && RyPv[1].Equals(contradoc))
             {
                 return true;
             }
-            else { return false; }
+            else { 
+                return false; 
+            }
         }
 
         public bool VerifRutyPassSecre()
@@ -174,7 +183,8 @@ namespace Clinica
                 return false;
             }
         }
-
+        
+        
     }
 
 }
