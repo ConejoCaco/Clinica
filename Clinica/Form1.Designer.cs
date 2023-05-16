@@ -63,7 +63,7 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Home";
             this.ResumeLayout(false);
             this.PerformLayout();
 

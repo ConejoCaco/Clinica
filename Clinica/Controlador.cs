@@ -54,7 +54,7 @@ namespace Clinica
             get { return passsecre;}
             set { passsecre = value;}
         }
-        //Termino Variables Gerson
+        
 
 
         /*Para usar el metodo de verificar rut, al momento de ingresar paramatros verificar que esten sin puntos
@@ -176,6 +176,18 @@ namespace Clinica
             }
         }
 
+        public void ListandoADM(DataGridView a)
+        {
+            a.DataSource = mo.admLista();
+        }
+        public void ListandoMed(DataGridView a)
+        {
+            a.DataSource = mo.admmedicosLista();
+        }
+        public void ListandoSec(DataGridView a)
+        {
+            a.DataSource = mo.admsecretariosLista();
+        }
     }
 
 }
