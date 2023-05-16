@@ -55,7 +55,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(88, 26);
             this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
+            this.button1.Text = "Agregar";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
@@ -87,7 +87,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(711, 35);
+            this.button5.Location = new System.Drawing.Point(700, 34);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(88, 26);
             this.button5.TabIndex = 4;
