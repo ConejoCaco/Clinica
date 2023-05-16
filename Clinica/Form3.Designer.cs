@@ -41,6 +41,7 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -160,6 +161,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(778, 198);
             this.panel3.TabIndex = 9;
+            this.panel3.Visible = false;
             // 
             // dataGridView3
             // 
@@ -169,11 +171,20 @@
             this.dataGridView3.Size = new System.Drawing.Size(746, 183);
             this.dataGridView3.TabIndex = 0;
             // 
+            // panel4
+            // 
+            this.panel4.Location = new System.Drawing.Point(248, 12);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(446, 174);
+            this.panel4.TabIndex = 10;
+            this.panel4.Visible = false;
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -212,5 +223,6 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.Panel panel4;
     }
 }
