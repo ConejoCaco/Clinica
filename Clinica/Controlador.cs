@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Security.Cryptography;
-using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,7 +16,7 @@ namespace Clinica
         //Variables Gerson
         private string admin, admpass;
         //Variables Doctor
-        private string rutdoctor, contradoc,nombredoc,last_namedoc;
+        private string rutdoctor, contradoc;
         //Variables Clemente
         private string rutsecre,passsecre;
 
@@ -31,11 +29,6 @@ namespace Clinica
         {
             get { return contradoc; }
             set { contradoc = value; }
-        }
-        public string Nombredoc
-        {
-            get { return nombredoc; }
-            set { nombredoc = value; }
         }
 
         public string Admin
@@ -61,7 +54,7 @@ namespace Clinica
             get { return passsecre;}
             set { passsecre = value;}
         }
-        //Termino Variables Gerson
+        
 
 
         /*Para usar el metodo de verificar rut, al momento de ingresar paramatros verificar que esten sin puntos
@@ -158,16 +151,15 @@ namespace Clinica
                 return false;
             }
         }
+        
         public bool VerifRutDoc()
         {
-            string[] RyPv = mo.ComprobarRutyContra(rutdoctor);
+            string[] RyPv = mo.ComprobarRutyContra(Rutdoctor);
             if (RyPv[0].Equals(rutdoctor) && RyPv[1].Equals(contradoc))
             {
                 return true;
             }
-            else { 
-                return false; 
-            }
+            else { return false; }
         }
 
         public bool VerifRutyPassSecre()
@@ -183,8 +175,19 @@ namespace Clinica
                 return false;
             }
         }
-        
-        
+
+        public void ListandoADM(DataGridView a)
+        {
+            a.DataSource = mo.admLista();
+        }
+        public void ListandoMed(DataGridView a)
+        {
+            a.DataSource = mo.admmedicosLista();
+        }
+        public void ListandoSec(DataGridView a)
+        {
+            a.DataSource = mo.admsecretariosLista();
+        }
     }
 
 }

@@ -36,7 +36,6 @@ namespace Clinica
                     Form3 fm3 = new Form3();
                     this.Hide();
                     fm3.Show();
-                    MessageBox.Show("Bienvenido!");
                 }
                 else
                 {

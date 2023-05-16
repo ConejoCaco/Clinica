@@ -40,6 +40,24 @@ namespace Clinica
             return DatosSecre;
             
         }
+        public List<Administrador> admLista()
+        {
+            List<Administrador> mda = db.Administrador.ToList();
+            return mda;
+        }
+
+        public List<Medicos> admmedicosLista()
+        {
+            List<Medicos> mdamedi = db.Medicos.ToList();
+            return mdamedi;
+        }
+        public List<Secretarios> admsecretariosLista()
+        {
+            List<Secretarios> mdasec = db.Secretarios.ToList();
+            return mdasec;
+        }
+
         
+
     }
 }
