@@ -99,6 +99,7 @@ namespace Clinica
         {
             if (textBox1.Text.Length <= 4 || textBox1.Text.Length >8)
             {
+                ctr.SonPalabras(textBox1.Text);
                 label5.Text = "El largo entre 5 y 8";
                 label5.Visible = true;
             }
