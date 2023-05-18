@@ -28,27 +28,35 @@ namespace Clinica
         private void Ingresar_Click(object sender, EventArgs e)
         {
 
-            if (string.IsNullOrEmpty(RutDoctor.Text) || string.IsNullOrEmpty(PassDoctor.Text))
+            try
             {
-                MessageBox.Show("Rellene los campos por favor");
-            }
-            else
-            {
-                controlador.Rutdoctor = RutDoctor.Text;
-                controlador.Contradoc = PassDoctor.Text;
-                if (controlador.VerifRutDoc())
+                if (string.IsNullOrEmpty(RutDoctor.Text) || string.IsNullOrEmpty(PassDoctor.Text))
                 {
-                    
-                    Form10 nuevo = new Form10();
-                    
-                    this.Hide();
-                    nuevo.Show();
-                    
+                    MessageBox.Show("Rellene los campos por favor");
                 }
                 else
                 {
-                    MessageBox.Show("Datos Invalidos");
+                    controlador.Rutdoctor = RutDoctor.Text;
+                    controlador.Contradoc = PassDoctor.Text;
+                    if (controlador.VerifRutDoc())
+                    {
+
+                        Form10 nuevo = new Form10();
+
+                        this.Hide();
+                        nuevo.Show();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Datos Invalidos");
+                    }
                 }
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Porfavor ingresa datos validos");
+                RutDoctor.Text = null;
+                PassDoctor.Clear();
             }
         }
 

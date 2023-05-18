@@ -40,7 +40,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(149, 153);
+            this.label2.Location = new System.Drawing.Point(132, 140);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 16);
             this.label2.TabIndex = 17;
@@ -49,7 +49,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(149, 91);
+            this.label1.Location = new System.Drawing.Point(132, 78);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(33, 16);
             this.label1.TabIndex = 16;
@@ -57,7 +57,7 @@
             // 
             // Volver
             // 
-            this.Volver.Location = new System.Drawing.Point(237, 263);
+            this.Volver.Location = new System.Drawing.Point(220, 250);
             this.Volver.Name = "Volver";
             this.Volver.Size = new System.Drawing.Size(75, 24);
             this.Volver.TabIndex = 15;
@@ -67,7 +67,7 @@
             // 
             // PassDoctor
             // 
-            this.PassDoctor.Location = new System.Drawing.Point(228, 150);
+            this.PassDoctor.Location = new System.Drawing.Point(211, 137);
             this.PassDoctor.Name = "PassDoctor";
             this.PassDoctor.PasswordChar = '*';
             this.PassDoctor.Size = new System.Drawing.Size(100, 22);
@@ -75,14 +75,14 @@
             // 
             // RutDoctor
             // 
-            this.RutDoctor.Location = new System.Drawing.Point(228, 85);
+            this.RutDoctor.Location = new System.Drawing.Point(211, 72);
             this.RutDoctor.Name = "RutDoctor";
             this.RutDoctor.Size = new System.Drawing.Size(100, 22);
             this.RutDoctor.TabIndex = 13;
             // 
             // Ingresar
             // 
-            this.Ingresar.Location = new System.Drawing.Point(237, 220);
+            this.Ingresar.Location = new System.Drawing.Point(220, 207);
             this.Ingresar.Name = "Ingresar";
             this.Ingresar.Size = new System.Drawing.Size(75, 26);
             this.Ingresar.TabIndex = 12;
@@ -93,7 +93,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(149, 122);
+            this.label3.Location = new System.Drawing.Point(132, 109);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(151, 16);
             this.label3.TabIndex = 18;
@@ -105,7 +105,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(559, 411);
+            this.ClientSize = new System.Drawing.Size(489, 346);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);

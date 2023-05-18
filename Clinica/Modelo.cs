@@ -56,8 +56,27 @@ namespace Clinica
             List<Secretarios> mdasec = db.Secretarios.ToList();
             return mdasec;
         }
+        public List<Citas> CitasLista()
+        {
+            List<Citas> citas = db.Citas.ToList();
+            return citas;
+        }
+        public List<Pacientes> PacientesListas()
+        {
+            List<Pacientes> pacientes = db.Pacientes.ToList();
+            return pacientes;
+        }
+        public List<Historial_Medico> Historial()
+        {
+            List<Historial_Medico> historial = db.Historial_Medico.ToList();
+            return historial;
+        }
+        public string obtenernameylast(string n)
+        {
+            Medicos doc = db.Medicos.FirstOrDefault(p => p.Nombres == n);
+            string nombres = doc.Nombres;
+            return nombres;
 
-        
-
+        }
     }
 }
