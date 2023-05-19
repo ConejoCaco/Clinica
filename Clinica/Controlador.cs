@@ -211,6 +211,7 @@ namespace Clinica
         {
             Historial.DataSource = mo.Historial();
         }
+
         public bool SonPalabras(string x)
         {
             char[] y = x.ToCharArray();

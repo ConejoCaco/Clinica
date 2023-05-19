@@ -71,6 +71,7 @@ namespace Clinica
             List<Historial_Medico> historial = db.Historial_Medico.ToList();
             return historial;
         }
+        
         public string obtenernameylast(string n)
         {
             Medicos doc = db.Medicos.FirstOrDefault(p => p.Nombres == n);
