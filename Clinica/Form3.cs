@@ -94,12 +94,19 @@ namespace Clinica
                     label5.Text = "Solo letras";
                 }
                 button1.Enabled = false;
-                label5.Visible = true;
+                
             }
             else
             {
-                button1.Enabled = true;
-                label5.Visible=false;
+                if (!ctr.SonPalabras(textBox1.Text))
+                {
+                    label5.Text = "Solo letras";
+                }else
+                {
+                    button1.Enabled = true;
+                    label5.Text = String.Empty;
+                }
+                
             }
         }
 
