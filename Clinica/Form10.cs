@@ -79,8 +79,8 @@ namespace Clinica
 
         private void button9_Click(object sender, EventArgs e)
         {
-            NombreDoc.Text = controlador.nombredoc();
-            NombreDoc.Update();
+            
+            
             PanelCItas.Refresh();
             PanelHistorial.Refresh();
             PanelPacientes.Refresh();
