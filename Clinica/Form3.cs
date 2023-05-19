@@ -14,6 +14,8 @@ namespace Clinica
     {
         private static int key = 0;
         Controlador ctr = new Controlador();
+        Panel[] paneles;
+        TextBox[] p4;
         public Form3()
         {
             InitializeComponent();
@@ -32,21 +34,15 @@ namespace Clinica
             switch (x)
             {
                 case 0:
-                    panel2.Visible = false;
-                    panel3.Visible = false;
-                    panel1.Show();
+                    Mostrarpaneles(panel1,panel4,paneles);
                     ctr.ListandoADM(dataGridView1);
                     break;
                 case 1:
-                    panel1.Visible = false;
-                    panel3.Visible = false;
-                    panel2.Show();
+                    Mostrarpaneles(panel2,panel4,paneles);
                     ctr.ListandoMed(dataGridView2);
                     break;
                 case 2:
-                    panel2.Visible = false;
-                    panel1.Visible = false;
-                    panel3.Show();
+                    Mostrarpaneles(panel3,panel4,paneles);
                     ctr.ListandoSec(dataGridView3);
                     break;
                 
@@ -54,5 +50,65 @@ namespace Clinica
             }
         }
 
+        private void Form3_Load(object sender, EventArgs e)
+        {
+            paneles = new Panel[] {panel1,panel2,panel3,panel4};
+            p4 = new TextBox[] { textBox1, textBox2, textBox3 };
+        }
+
+        public void Mostrarpaneles(Panel a,Panel b, Panel[] c )
+        {
+            for (int i = 0;i <= c.Length -1; i++)
+            {
+                if (c[i] == a || c[i] == b)
+                {
+                    c[i].Visible = true;
+                    
+                }
+                else
+                {
+                    c[i].Visible = false;
+                }
+            }
+        }
+        //boton agregar
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (VerificarContent(p4))
+            {
+                
+            }
+            else
+            {
+                
+            }
+        }
+        public bool VerificarContent(TextBox[] a )
+        {
+            for (int i = 0;i < a.Length;i++)
+            {
+                if (string.IsNullOrEmpty(a[i].Text))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Length <= 4 || textBox1.Text.Length >8)
+            {
+                ctr.SonPalabras(textBox1.Text);
+                label5.Text = "El largo entre 5 y 8";
+                label5.Visible = true;
+            }
+            else
+            {
+                label5.Visible=false;
+            }
+        }
+
+        
     }
 }
