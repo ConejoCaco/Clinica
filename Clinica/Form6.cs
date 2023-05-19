@@ -15,7 +15,8 @@ namespace Clinica
     {
         Controlador control = new Controlador();
         DateTime a;
-        TextBox[] x; 
+        TextBox[] x;
+
         public Form6()
         {
             InitializeComponent();
@@ -29,6 +30,10 @@ namespace Clinica
             }
             else
             {
+                DateTime c = DateTime.Now;
+                TimeSpan diferencia = c.Subtract(a);
+                int edad = (int)(diferencia.TotalDays / 365.25);
+                MessageBox.Show("La edad del paciente es: " + edad + " años");
                 int k = Convert.ToInt32(textBox6.Text);
                 string rut = control.AgregarGuion(textBox4.Text);
                 control.NombrePaciente = textBox1.Text;
