@@ -43,6 +43,12 @@ namespace Clinica
                     form6.Show();
 
                 }
+                else
+                {
+                    MessageBox.Show("Usuario no encontrado");
+                    textBox1.Text = null;
+                    textBox2.Clear();
+                }
             
             
             }

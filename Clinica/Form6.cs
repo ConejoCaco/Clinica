@@ -39,5 +39,10 @@ namespace Clinica
         {
             control.Citas(dataGridView1);
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Refresh();
+        }
     }
 }
