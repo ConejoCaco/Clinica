@@ -79,5 +79,22 @@ namespace Clinica
             return nombres;
 
         }
+        public bool RegistrarAdm(string a,string b,string c)
+        {
+            try
+            {
+                Administrador me = new Administrador();
+                me.Usuario = a;
+                me.Password = b;
+                me.Rut = c;
+                db.Administrador.InsertOnSubmit(me);
+                db.SubmitChanges();
+                return true;
+            }catch (Exception ex)
+            {
+                return false;
+            }
+            
+        }
     }
 }

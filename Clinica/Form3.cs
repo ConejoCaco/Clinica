@@ -34,15 +34,15 @@ namespace Clinica
             switch (x)
             {
                 case 0:
-                    Mostrarpaneles(panel1,panel4,paneles);
+                    ctr.Mostrarpaneles(panel1,panel4,paneles);
                     ctr.ListandoADM(dataGridView1);
                     break;
                 case 1:
-                    Mostrarpaneles(panel2,panel4,paneles);
+                    ctr.Mostrarpaneles(panel2,panel2,paneles);
                     ctr.ListandoMed(dataGridView2);
                     break;
                 case 2:
-                    Mostrarpaneles(panel3,panel4,paneles);
+                    ctr.Mostrarpaneles(panel3,panel3,paneles);
                     ctr.ListandoSec(dataGridView3);
                     break;
                 
@@ -56,59 +56,81 @@ namespace Clinica
             p4 = new TextBox[] { textBox1, textBox2, textBox3 };
         }
 
-        public void Mostrarpaneles(Panel a,Panel b, Panel[] c )
-        {
-            for (int i = 0;i <= c.Length -1; i++)
-            {
-                if (c[i] == a || c[i] == b)
-                {
-                    c[i].Visible = true;
-                    
-                }
-                else
-                {
-                    c[i].Visible = false;
-                }
-            }
-        }
+        
         //boton agregar
         private void button1_Click(object sender, EventArgs e)
         {
-            if (VerificarContent(p4))
+            if (!ctr.VerificarContent(p4))
             {
-                
+                MessageBox.Show("Debe llenar todos los campos");
             }
             else
             {
+                string run = ctr.AgregarGuion(textBox3.Text);
+                ctr.Admin = textBox1.Text;
+                ctr.Admpass = textBox2.Text;
+                ctr.Admrut = run;
+                if (ctr.RegistroAdm())
+                {
+                    MessageBox.Show("Registrado existosamente");
+                }
+                else
+                {
+                    MessageBox.Show("Fallo al registrar");
+                }
+                
                 
             }
         }
-        public bool VerificarContent(TextBox[] a )
-        {
-            for (int i = 0;i < a.Length;i++)
-            {
-                if (string.IsNullOrEmpty(a[i].Text))
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
+        
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             if (textBox1.Text.Length <= 4 || textBox1.Text.Length >8)
             {
-                ctr.SonPalabras(textBox1.Text);
                 label5.Text = "El largo entre 5 y 8";
+                if (!ctr.SonPalabras(textBox1.Text))
+                {
+                    label5.Text = "Solo letras";
+                }
+                button1.Enabled = false;
                 label5.Visible = true;
             }
             else
             {
+                button1.Enabled = true;
                 label5.Visible=false;
             }
         }
 
-        
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Length <= 4 || textBox1.Text.Length > 8)
+            {
+                label6.Text = "El largo entre 5 y 8";
+                button1.Enabled = false;
+                
+            }
+            else
+            {
+                label6.Text = String.Empty;
+                button1.Enabled = true;
+                
+            }
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            if (!ctr.EsRutValido(textBox3.Text))
+            {
+                label7.Text = "Ingrese un rut valido";
+                button1.Enabled =false;
+            }
+            else
+            {
+                label7.Text = String.Empty;
+                button1.Enabled = true;
+            }
+        }
     }
 }

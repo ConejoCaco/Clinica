@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms;
+
+
 
 namespace Clinica
 {
@@ -15,7 +19,7 @@ namespace Clinica
         public Controlador() { }
 
         //Variables Gerson
-        private string admin, admpass;
+        private string admin, admpass,admrut;
         //Variables Doctor
         private string rutdoctor, contradoc, nombre, apellido;
         //Variables Clemente
@@ -64,78 +68,58 @@ namespace Clinica
             get { return passsecre; }
             set { passsecre = value; }
         }
+        public string Admrut
+        {
+            get { return admrut; }
+            set { admrut = value; }
+        }
 
 
 
         /*Para usar el metodo de verificar rut, al momento de ingresar paramatros verificar que esten sin puntos
          y con guion*/
 
-        public bool Rut(string rut)
+        
+        public bool EsRutValido(string rut)
         {
-            string run = "";
-            string auxrut = rut;
-            string rut1 = rut.Split('-')[0];
-            int sum = 0;
-            int mult = 0;
-            int num_verificador = 0;
-            char[] rut_div = rut1.ToCharArray();
-            int[] a8 = { 2, 3, 4, 5, 6, 7, 2, 3 };
+            
+            rut = rut.Replace(".", "").Replace("-", "");
 
-
-            try
+            
+            if (!Regex.IsMatch(rut, @"^\d{7,8}[0-9Kk]$"))
             {
-                for (int i = rut1.Length - 1; i >= 0; i--)
-                {
-                    if (char.IsDigit(rut_div[i]))
-                    {
-                        run += rut_div[i];
-                    }
-                }
-                char[] rutf = run.ToCharArray();
-                if (rutf.Length == 7)
-                {
-                    for (int i = 0; i < 7; i++)
-                    {
-                        char a = rutf[i];
-                        int b;
-                        b = a - '0';
-                        mult = b * a8[i];
-                        sum += mult;
-                    }
-                    int c = sum / 11;
-                    int d = c * 11;
-                    int e = sum - d;
-                    num_verificador = 11 - e;
-                }
-                if (rutf.Length == 8)
-                {
-                    for (int i = 0; i < 8; i++)
-                    {
-                        char a = rutf[i];
-                        int b;
-                        b = a - '0';
-                        mult = b * a8[i];
-                        sum += mult;
-                    }
-                    int c = sum / 11;
-                    int d = c * 11;
-                    int e = sum - d;
-                    num_verificador = 11 - e;
-                }
+                return false;
             }
-            catch (Exception e) { }
 
-            string ultimo = auxrut.Substring(auxrut.Length - 1);
-            string auxR = num_verificador.ToString();
-            if (ultimo.Equals("K") || ultimo.Equals("k") && num_verificador == 10)
+            
+            char dv = rut[rut.Length - 1];
+
+            
+            string cuerpo = rut.Substring(0, rut.Length - 1);
+
+            
+            int suma = 0;
+            int multiplicador = 2;
+
+            for (int i = cuerpo.Length - 1; i >= 0; i--)
+            {
+                suma += int.Parse(cuerpo[i].ToString()) * multiplicador;
+                multiplicador = multiplicador == 7 ? 2 : multiplicador + 1;
+            }
+
+            int resto = suma % 11;
+            int verificador = 11 - resto;
+
+            
+            if (verificador == 10 && (dv == 'K' || dv == 'k'))
             {
                 return true;
             }
-            else if (auxR.Equals(ultimo))
+            else if (verificador == 11 && dv == '0')
             {
                 return true;
             }
-            else if (ultimo.Equals("0") && num_verificador == 11)
+            else if (verificador == int.Parse(dv.ToString()))
             {
                 return true;
             }
@@ -143,10 +127,7 @@ namespace Clinica
             {
                 return false;
             }
-
-
         }
-
 
         public bool Login()
         {
@@ -220,6 +201,7 @@ namespace Clinica
             {
                 if (!char.IsLetter(y[i]))
                 {
+                    Console.WriteLine("No es una letra");
                     return false;
 
                 }
@@ -227,6 +209,57 @@ namespace Clinica
             }
             return true;
             
+        }
+
+        public bool VerificarContent(TextBox[] a)
+        {
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (string.IsNullOrEmpty(a[i].Text))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        public string AgregarGuion(string texto)
+        {
+            texto = texto.ToLower();
+            texto = texto.Replace(".", "").Replace("-", "");
+            
+            char ultimaLetra = texto[texto.Length - 1];
+
+            string resultado = texto.Insert(texto.Length - 1, "-");
+
+            return resultado;
+        }
+
+        public bool RegistroAdm()
+        {
+            if(mo.RegistrarAdm(admin, admpass, admrut))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
+        public void Mostrarpaneles(Panel a, Panel b, Panel[] c)
+        {
+            for (int i = 0; i <= c.Length - 1; i++)
+            {
+                if (c[i] == a || c[i] == b)
+                {
+                    c[i].Visible = true;
+
+                }
+                else
+                {
+                    c[i].Visible = false;
+                }
+            }
         }
 
 
