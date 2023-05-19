@@ -24,6 +24,43 @@ namespace Clinica
         private string rutdoctor, contradoc, nombre, apellido;
         //Variables Clemente
         private string rutsecre, passsecre;
+        private string nombrespac, apellidopac, rutpac, emailpac;
+        private int telefono;
+        private DateTime fechanacimiento;
+
+        public string NombrePaciente
+        {
+            get { return nombrespac; }
+            set { nombrespac = value; }
+        }
+
+        public string ApellidosPaciente
+        {
+            get { return apellidopac; }
+            set { apellidopac = value; }
+        }
+
+        public string RutPaciente
+        {
+            get { return rutpac; }
+            set { rutpac = value; }
+        }
+
+        public string EmailPaciente
+        {
+            get { return emailpac; }
+            set { emailpac = value; }
+        }
+        public int TelefonoPaciente
+        {
+            get { return telefono; }
+            set { telefono = value; }
+        }
+        public DateTime FechaNaciemiento
+        {
+            get { return fechanacimiento; }
+            set { fechanacimiento = value;}
+        }
         public string Nombre
         {
             get { return nombre; }
@@ -245,6 +282,18 @@ namespace Clinica
                 return false;
             }
             
+        }
+        public bool RegistroPaciente()
+        {
+            if (mo.RegistrarPac(NombrePaciente, ApellidosPaciente, FechaNaciemiento, RutPaciente, EmailPaciente, TelefonoPaciente))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
         public void Mostrarpaneles(Panel a, Panel b, Panel[] c)
         {

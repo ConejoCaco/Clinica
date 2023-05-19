@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Clinica
 {
@@ -30,15 +31,15 @@ namespace Clinica
             string[] RyP = { run, contra };
             return RyP;
         }
-        
+
         public string[] ComprobarSecreRutyPass(string c)
         {
-            Secretarios sec = db.Secretarios.Single(r=>r.Rut.Equals((c)));
+            Secretarios sec = db.Secretarios.Single(r => r.Rut.Equals((c)));
             string rut = sec.Rut.Trim();
             string contra = sec.Password.Trim();
             string[] DatosSecre = { rut, contra };
             return DatosSecre;
-            
+
         }
         public List<Administrador> admLista()
         {
@@ -71,7 +72,7 @@ namespace Clinica
             List<Historial_Medico> historial = db.Historial_Medico.ToList();
             return historial;
         }
-        
+
         public string obtenernameylast(string n)
         {
             Medicos doc = db.Medicos.FirstOrDefault(p => p.Nombres == n);
@@ -79,7 +80,7 @@ namespace Clinica
             return nombres;
 
         }
-        public bool RegistrarAdm(string a,string b,string c)
+        public bool RegistrarAdm(string a, string b, string c)
         {
             try
             {
@@ -90,11 +91,37 @@ namespace Clinica
                 db.Administrador.InsertOnSubmit(me);
                 db.SubmitChanges();
                 return true;
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 return false;
             }
-            
+
+        }
+        public bool RegistrarPac(string nombre, string apellido, DateTime fechaNac, string rutpac, string email, int telefono)
+        {
+            try
+            {
+                Pacientes pc = new Pacientes();
+
+                pc.Nombres = nombre;
+                pc.Apellidos = apellido;
+                pc.FechaNacimiento = fechaNac;
+                pc.Rut = rutpac;
+                pc.Email = email;
+                pc.Telefono = telefono;
+                db.Pacientes.InsertOnSubmit(pc);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+
+
         }
     }
 }
+
