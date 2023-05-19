@@ -80,7 +80,7 @@ namespace Clinica
          y con guion*/
 
         
-        public bool EsRutValido(string rut)
+        public bool Rut(string rut)
         {
             
             rut = rut.Replace(".", "").Replace("-", "");

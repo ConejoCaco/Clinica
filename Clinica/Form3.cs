@@ -121,7 +121,7 @@ namespace Clinica
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
-            if (!ctr.EsRutValido(textBox3.Text))
+            if (!ctr.Rut(textBox3.Text))
             {
                 label7.Text = "Ingrese un rut valido";
                 button1.Enabled =false;
